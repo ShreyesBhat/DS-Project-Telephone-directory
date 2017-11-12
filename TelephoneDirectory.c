@@ -196,4 +196,305 @@ int main()
 }
 
 /*...................................................end of v3.1..................................*/
+/*...................Final Code.......................*/
+
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+typedef struct
+{
+    char s[30];
+    char num[12];
+    char houseno[5];
+    int n;
+}house;
+house a[20]=       {{"Ramesh","972234990","1197",4},
+                    {"Eshwar","9881238912","1198",5},
+                    {"Mahesh","9552141221","1210",3},
+                    {"Jonathan","8801214534","1400", 4},
+                    {"Jagadeesh","8047586567","1405",2},
+                    {"Adithya","7019043256","1521",5},
+                    {"Santhosh","9008887412","1622",3},
+                    {"Mridula","9900289890","1650",1},
+                    {"Ashwin","9730016789","1811",5},
+                    {"Priyanka","7719921278","2121",2}
+
+};
+int i=10;
+void add()
+{
+    printf("Enter house number\n");
+    scanf("%s",a[i].houseno);
+    printf("Enter the number of residents\n");
+    scanf("%d",&a[i].n);
+    printf("Enter the name of Owner\n");
+    scanf("%s",a[i].s);
+    printf("Enter the mobile number\n");
+    scanf("%s",a[i].num);
+    ++i;
+}
+void display()
+{
+    int z;
+    printf("HOUSE NUMBER\t     NAME       \t\t          MOBILE NUMBER\t\t     NUMBER OF OCCUPANTS\n");
+    for(z=0;z<i;z++)
+    {
+        printf("    %s     \t     %s         \t\t          %s\t\t            %d\n",a[z].houseno,a[z].s,a[z].num,a[z].n);
+    }
+}
+void Delete()
+{
+    int ch,y,z,flag=0;
+    char keyname[50],keymobilenum[10],keyhousenum[5];
+    scanf("%d",&ch);
+    switch(ch)
+    {
+        case 1:
+               flag=0;
+               printf("Enter the full name of resident\n");
+               scanf("%s",keyname);
+               for(z=0;z<i;z++)
+               {
+                if(!strcmp(a[z].s,keyname))
+                {
+                flag=1;
+                break;
+                }
+               }
+               if(flag)
+               {
+                strcpy(a[z].s,"NULL");
+                strcpy(a[z].num,"NULL");
+                printf("RECORD DELETED\n");
+                --i;
+               }
+               else
+               printf("Person not found in the locality\n");
+               break;
+
+               case 2:flag=0;
+                printf("Enter the house number\n");
+                scanf("%s",keyhousenum);
+                for(z=0;z<i;z++)
+                {
+                    if(!strcmp(a[z].houseno,keyhousenum))
+                {
+                flag=1;
+                break;
+                }
+                }
+                if(flag)
+                {
+                strcpy(a[z].s,"NULL");
+                strcpy(a[z].num,"NULL");
+                printf("RECORD DELETED\n");
+                --i;
+                }
+                else
+                printf("Entered house number doesn't exist in the locality\n");
+                break;
+                case 3:
+                flag=0;
+                printf("Enter the phone number\n");
+                scanf("%s",keymobilenum);
+                for(z=0;z<i;z++)
+                {
+                    if(!strcmp(a[z].num,keymobilenum))
+                {
+                flag=1;
+                break;
+                }
+                }
+                if(flag)
+                {
+                strcpy(a[z].s,"NULL");
+                strcpy(a[z].num,"NULL");
+                printf("RECORD DELETED\n");
+                --i;
+                }
+                else
+                printf("Entered mobile number doesn't exist in the locality\n");
+                break;
+                default:printf("Invalid Entry");
+    }
+
+}
+void modify()
+{
+     int ch,y,z,flag=0;
+    char keyname[50],keymobilenum[12],keyhousenum[5];
+    scanf("%d",&ch);
+    switch(ch)
+    {
+        case 1:
+
+               printf("Enter the old name of owner\n");
+               scanf("%s",keyname);
+               for(z=0;z<i;z++)
+               {
+                if(!strcmp(a[z].s,keyname))
+                {
+               flag=1;
+               break;
+                }
+               }
+               if(flag)
+               {
+                printf("Enter the new name of owner\n");
+                scanf("%s",a[z].s);
+                printf("RECORD SUCCESSFULLY CHANGED\n");
+               }
+               else
+               printf("Person not found in the locality\n");
+               break;
+               case 2:
+                printf("Enter the old house number\n");
+                scanf("%s",keyhousenum);
+                for(z=0;z<i;z++)
+                {
+                    if(!strcmp(a[z].houseno,keyhousenum))
+                {
+                flag=1;
+                break;
+                }
+                }
+                if(flag)
+                {
+                printf("Enter the new house number\n");
+                scanf("%s",a[z].houseno);
+                printf("RECORD SUCCESSFULLY CHANGED\n");
+                }
+                else
+                printf("Entered house number doesn't exist in the locality\n");
+                break;
+                case 3:
+                printf("Enter the old phone number\n");
+                scanf("%s",keymobilenum);
+                for(z=0;z<i;z++)
+                {
+                    if(!strcmp(a[z].num,keymobilenum))
+                {
+                flag=1;
+                break;
+                }
+
+                }
+                if(flag)
+                {
+                     printf("Enter the new mobile number\n");
+                scanf("%s",a[z].num);
+                printf("RECORD SUCCESSFULLY CHANGED\n");
+                }
+                else
+                printf("Entered mobile number doesn't exist in the locality\n");
+                break;
+                default:printf("Invalid Entry");
+    }
+}
+void search1()
+{
+    int y,z,flag=0;
+    char keyname[50];
+    printf("Enter the full name of resident\n");
+               scanf("%s",keyname);
+               for(z=0;z<i;z++)
+               {
+
+                if(!strcmp(a[z].s,keyname))
+                {
+                    flag=1;
+                    break;
+                }
+
+               }
+               if(flag)
+               printf("%s\t%s\t%s\t\n",a[z].houseno,a[z].s,a[z].num);
+               else
+               printf("Person not found in the locality\n");
+}
+void search2()
+{
+    int y,z,c,d,flag=0;
+    char keyhousenum[5];
+    printf("Enter the house number\n");
+                scanf("%s",keyhousenum);
+                for(z=0;z<i;z++)
+                {
+                    if(!strcmp(a[z].houseno,keyhousenum))
+                {
+                    flag=1;
+                    break;
+                }
+                }
+                if(flag)
+                {
+                     printf("Entered House number exists in the locality\nThe details of the house are\n");
+                    for(c=z;c<=z;c++)
+                    {
+                     printf("    %s     \t     %s  \t\t          %s\n",a[c].houseno,a[c].s,a[c].num);
+                    }
+                }
+                else
+                printf("Entered house number doesn't exist in the locality\n");
+}
+void search3()
+{
+    int y,z,flag=0;
+    char keymobilenum[10];
+    printf("Enter the phone number\n");
+                scanf("%s",keymobilenum);
+                for(z=0;z<i;z++)
+                {
+                    if(!strcmp(a[z].num,keymobilenum))
+                {
+                    flag=1;
+                    break;
+                }
+
+                }
+                if(flag)
+                {
+                    printf("Entered mobile number exists in the locality\nThe details are:\n");
+                    printf("%s\t%s\t%s\t\n",a[z].houseno,a[z].s,a[z].num);
+                }
+                else
+                printf("Entered mobile number doesn't exist in the locality\n");
+}
+void main()
+{
+    int ch,choice;
+printf("WELCOME TO TELEPHONE DIRECTORY\n");
+do
+{
+printf("Menu\n1.Add a new entry\n2.Delete any old entry\n3.Modify any old entry\n4.Search any old entry\n5.Display entire Telephone Directory\n6.Exit\n");
+printf("Enter your choice\n");
+scanf("%d",&ch);
+switch(ch)
+{
+    case 1:add();break;
+    case 2:printf("1.Delete by name\n2.Delete by house number\n3.Delete by mobile number\n");
+           printf("Enter your choice\n");
+           Delete();break;
+    case 3:printf("1.Modify name\n2.Modify house number\n3.Modify mobile number\n");
+           printf("Enter your choice\n");
+           modify();break;
+    case 4:printf("1.Search by name\n2.Search by house number\n3.Search by mobile number\n");
+           printf("Enter your choice");
+           scanf("%d",&choice);
+           if(choice==1)
+           {search1();break;}
+           else if(choice==2)
+           {search2();break;}
+           else if(choice==3)
+           {search3();break;}
+           else
+           printf("Invalid input");
+           break;
+    case 5:display();break;
+    case 6:exit(0);
+}
+}while(ch!=6);
+}
+/*.............................................*/
 
