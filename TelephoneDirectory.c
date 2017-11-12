@@ -140,6 +140,7 @@ void addrecord()
     gets(entry[9+c].address);
     printf("Enter total number of occupants of the house\n");
     scanf("%d",&entry[9+c].numocc);
+    ++c;
     printf("Record added successfully\nUpdated database is\n");
     //call display function
 }
