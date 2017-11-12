@@ -106,4 +106,47 @@ entry9.numocc=2;
 entry10.numocc=3;
 }
 /*......................................................................................*/
+/*.........................................Version 3....................................*/
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+typedef struct
+{
+    char name[20];
+    char phno[10];
+    char address[50];
+    int numocc;
+} database;
+database entry[20]={{"Ramesh","9722344431","1197 2nd cross",4},
+                    {"Eshwar","9881233421","1198 2nd cross",5},
+                    {"Mahesh","9552144313","1210 2nd cross",3},
+                    {"Jonathan","8801213443","1400 3rd cross", 4},
+                    {"Jagadeesh","8047589923","1405 3rd cross",2},
+                    {"Adithya","7019045564","1521 10th cross",5},
+                    {"Santhosh","9008887912","1622 15th main rd",3},
+                    {"Mridula","9900288842","1650 15th main rd",1},
+                    {"Ashwin","9730012351","1811 18th main rd",5},
+                    {"Priyanka","7719923193","2121 23rd cross",2}
+                
+};
+void addrecord()
+{
+    static int c=1; 
+    printf("Enter name of the owner of the house\n");
+    gets(entry[9+c].name);
+    printf("Enter their telephone number (10 digits)\n");
+    gets(entry[9+c].phno);
+    printf("Enter their full address\n");
+    gets(entry[9+c].address);
+    printf("Enter total number of occupants of the house\n");
+    scanf("%d",&entry[9+c].numocc);
+    printf("Record added successfully\nUpdated database is\n");
+    //call display function
+}
+int main()
+{
+    addrecord();
+    return 0;
+}
+/*.....................................................End of version 3......................................................*/
 
