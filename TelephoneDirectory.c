@@ -150,4 +150,50 @@ int main()
     return 0;
 }
 /*.....................................................End of version 3......................................................*/
+/*.............................................version 3.1......................................../
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+static int c=10;
+typedef struct
+{
+    char name[20];
+    char phno[10];
+    int hno;
+    int numocc;
+} database;
+database entry[20]={{"Ramesh","9722344431",1197,4},
+                    {"Eshwar","9881233421",1198,5},
+                    {"Mahesh","9552144313",1210,3},
+                    {"Jonathan","8801213443",1400, 4},
+                    {"Jagadeesh","8047589923",1405,2},
+                    {"Adithya","7019045564",1521,5},
+                    {"Santhosh","9008887912",1622,3},
+                    {"Mridula","9900288842",1650,1},
+                    {"Ashwin","9730012351",1811,5},
+                    {"Priyanka","7719923193",2121,2}
+                
+};
+void addrecord()
+{
+    printf("Enter name of the owner of the house\n");
+    gets(entry[c].name);
+    printf("Enter their telephone number (10 digits)\n");
+    gets(entry[c].phno);
+    printf("Enter their house number\n");
+    scanf("%d",&entry[c].hno);
+    printf("Enter total number of occupants of the house\n");
+    scanf("%d",&entry[c].numocc);
+    ++c;
+    printf("Record added successfully\n");
+    //call display function
+}
+int main()
+{
+    addrecord();
+    addrecord(); puts(entry[11].name); printf("%d",entry[11].numocc);
+    return 0;
+}
+
+/*...................................................end of v3.1..................................*/
 
